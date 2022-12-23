@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <div class="sign">
+        <div class="panel" *ngIf="issign">
+            <input [(ngModel)]="form.username" placeholder="username" />
+            <br/>
+            <br/>
+            <input type="password" [(ngModel)]="form.password" placeholder="password" />
+            <br/>
+            <br/>
+            <button (click)="sign()" style="width: 100%;" pButton pRipple type="button" label="LOG IN" class="p-button-rounded p-button-sm p-button-secondary"></button>
+            <p (click)="issign=false" class="route">create an account here</p>
+        </div>
+        <div class="panel" *ngIf="!issign">
+            <br/>
+            <input [(ngModel)]="regForm.username" placeholder="username" />
+            <br/>
+            <br/>
+            <input type="password" [(ngModel)]="regForm.password" placeholder="password" />
+            <br/>
+            <br/>
+            <button (click)="register()" style="width: 100%;" pButton pRipple type="button" label="REG AN ACCOUNT" class="p-button-rounded p-button-sm p-button-secondary"></button>
+            <p (click)="issign=true" class="route">back to login</p>
+        </div>
+    </div>
+    <p-toast style="color: white;"></p-toast>
+</div>

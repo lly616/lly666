@@ -1,0 +1,16 @@
+p-menubar {
+    height: 40px;
+    background: white;
+    display: flex;
+    width: 100vw;
+    top: 0px;
+    left: 0;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 999;
+}
+
+.p-menubar {
+    border: none;
+    width: 100%;
+}

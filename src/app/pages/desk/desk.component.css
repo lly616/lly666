@@ -1,0 +1,93 @@
+.desktop {
+    padding: 60px 20px 80px;
+    width: 100vw;
+    height: 100vh;
+    background: url('../../../assets/hero.png')center no-repeat;
+    background-size: cover;
+    overflow: auto;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.app-card {
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 28px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1),0 5px 15px rgba(0,0,0,0.1) inset;
+    background: #fcfcf4;
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    -ms-border-radius: 28px;
+    -o-border-radius: 28px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.app-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+}
+
+.app-card:hover {
+    transform: scale(1.1);
+}
+
+.hide {
+    position: absolute;
+    opacity: 0;
+}
+
+.delete {
+    opacity: 1;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.scroll {
+    animation: sc 0.3s linear infinite;
+    -webkit-animation: sc 0.2s linear infinite;
+}
+
+@keyframes sc {
+    0% {
+        transform: rotate(-3deg);
+        -webkit-transform: rotate(-3deg);
+        -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+        -o-transform: rotate(-3deg);
+} 50% {
+        transform: rotate(3deg);
+        -webkit-transform: rotate(3deg);
+        -moz-transform: rotate(3deg);
+        -ms-transform: rotate(3deg);
+        -o-transform: rotate(3deg);
+} 100% {
+        transform: rotate(-3deg);
+        -webkit-transform: rotate(-3deg);
+        -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+        -o-transform: rotate(-3deg);
+}
+}

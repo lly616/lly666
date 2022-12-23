@@ -1,0 +1,37 @@
+<div>
+    <p-dialog (onHide)="app.close()" [style]="{'width': '800px'}" [modal]="true" header="Release game" [(visible)]="app.modalVisible">
+        <div class="p-inputgroup">
+            <input [(ngModel)]="game.name" pInputText placeholder="Name">
+        </div>
+        <br/>
+        <input [(ngModel)]="game.username" pInputText placeholder="username">
+        <br/>
+        <br/>
+        <div>picture</div>
+        <div class="card">
+
+            <p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event)">
+                <ng-template pTemplate="toolbar">
+                    <div>Upload 3 Files</div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                    </ul>
+                </ng-template>
+                <ng-template pTemplate="content" let-files>
+                    <div>Additional content.</div>
+                </ng-template>
+            </p-fileUpload>
+
+
+        </div>
+        <br />
+        <textarea [rows]="5" [(ngModel)]="game.des" placeholder="Description" [cols]="30" style="width: 100%; min-height: 130px;" pInputTextarea [autoResize]="true"></textarea>
+        <br/>
+        <br/>
+        <button style="margin-right: 12px;" pButton pRipple class="p-button-warning">reset</button>
+        <button pButton (click)="createGame()" pRipple>release</button>
+    </p-dialog>
+    <p-toast></p-toast>
+</div>

@@ -1,0 +1,52 @@
+<div class="detail">
+    <div class="panel">
+        <div class="info">
+            <div>
+                <div class="base">
+                    <div class="thumb" pRipple>
+                        <img src="https://storygelly.blob.core.windows.net{{game.filePath}}" />
+                    </div>
+                    <div>
+                        <div class="name">name:{{game.name}}</div>
+                        <div class="tag">username:{{game.username}}</div>
+                        <button (click)="delete(game.id)" pButton pRipple type="button" label="delete" class="p-button-rounded p-button-sm p-button-secondary"></button>
+                        <button (click)="like(game.username)" pButton pRipple type="button" label="like" class="p-button-rounded p-button-sm p-button-secondary"></button>
+                    </div>
+                </div>
+                <div style="color: var(--base);">Description: {{game.des}}</div>
+                <div *ngFor="let item of likes">
+                    <div>
+                        <div style="color: var(--base);">friendsname: {{item.friendsname}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="comment">
+            <p-toast></p-toast>
+            <div class="commentCard" *ngFor="let item of commenti">
+                <div class="comInfo">
+                    <p-avatar [label]="getAvatarLabel(item.username)" styleClass="ml-2" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                    <div style="margin-left: 12px;">
+                        <div>
+                            <span style="font-weight: bold;">username:{{item.username}}</span>
+                        </div>
+                        <p>comment:{{item.comment || 'no description'}}</p>
+                        <button (click)="deletecomment(item.id)" pButton pRipple type="button" label="delete" class="p-button-rounded p-button-sm p-button-secondary"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="com">
+                <button (click)="handleComment()" pButton pRipple type="button" label="comment" class="p-button-rounded p-button-sm p-button-secondary"></button>
+            </div>
+            <p-dialog [style]="{'width': '600px'}" [modal]="true" header="Comment" [(visible)]="modalVisible">
+                <textarea [rows]="5" [(ngModel)]="comment.username" placeholder="username" [cols]="30" style="width: 100%; min-height: 30px;" pInputTextarea [autoResize]="true"></textarea>
+                <textarea [rows]="5" [(ngModel)]="comment.comment" placeholder="comment" [cols]="30" style="width: 100%; min-height: 130px;" pInputTextarea [autoResize]="true"></textarea>
+                <br/>
+                <br/>
+                <button style="margin-right: 12px;" pButton pRipple class="p-button-warning">reset</button>
+                <button pButton (click)="releaseComment()" pRipple>submit</button>
+            </p-dialog>
+        </div>
+    </div>
+</div>

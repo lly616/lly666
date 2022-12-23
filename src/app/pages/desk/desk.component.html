@@ -1,0 +1,38 @@
+<div class="desktop">
+    <app-navbar></app-navbar>
+    <div class="card-wrapper">
+        <div [class.scroll]="deleteOpen" #app class="app-card" (contextmenu)="test(item)" *ngFor="let item of appList">
+            <!-- <div *ngIf="deleteOpen" (click)="handleDelete(item._id)" class="hide" [class.delete]="deleteOpen"><i class="pi pi-times"></i></div> -->
+            <div (click)="toDetail(item.name)" class="width: 100%; height: 100%;">
+                <img src="https://storygelly.blob.core.windows.net{{item.filePath}}" [alt]="item.name" width="100%">
+            </div>
+            <p-contextMenu [global]="true" [target]="app" [model]="items"></p-contextMenu>
+        </div>
+    </div>
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+    <p-dock [model]="dockItems.slice(0,3)" position="bottom">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.icon" [alt]="item.label" width="100%">
+        </ng-template>
+    </p-dock>
+
+    <p-dialog [style]="{'width': '800px'}" [modal]="true" header="Update game" [(visible)]="dialogVisible">
+        <div class="p-inputgroup">
+            <input [(ngModel)]="current.name" pInputText placeholder="Name">
+        </div>
+        <br/>
+        <p-dropdown [options]="categories" [(ngModel)]="current.category" placeholder="Select a Country"></p-dropdown>
+        <br/>
+        <br/>
+        <div>Thumb</div>
+        <p-fileUpload (onUpload)="uploadOne($event)" [headers]="uploadHeader" name="upload" [url]="uploadUrl"></p-fileUpload>
+        <div class="thumb" *ngIf="current.thumb">uri: {{ current.thumb }}</div>
+        <br />
+        <textarea [rows]="5" [(ngModel)]="current.description" placeholder="Description" [cols]="30" style="width: 100%; min-height: 130px;" pInputTextarea [autoResize]="true"></textarea>
+        <br/>
+        <br/>
+        <button style="margin-right: 12px;" pButton pRipple class="p-button-warning">reset</button>
+        <button pButton (click)="updateGame()" pRipple>update</button>
+    </p-dialog>
+</div>
